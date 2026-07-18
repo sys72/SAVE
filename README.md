@@ -48,7 +48,7 @@ Run the 1-click installer at the root of your Git repository:
 
 ### Step 2: Choose your Wrapper
 The S.A.V.E. is completely language-agnostic. Check the `wrappers/` folder for ready-to-use drop-in code for your tech stack:
-- 🐍 **Python** (`version.py`)
+- 🧠 **Python** (`version.py`)
 - 🐘 **PHP** (`version.php`)
 - 🟡 **Node.js** (`version.js`)
 - 🐹 **Golang** (`version.go`)

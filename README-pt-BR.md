@@ -48,7 +48,7 @@ Rode o instalador de 1-clique na raiz do seu repositório Git:
 
 ### Passo 2: Escolha a sua Linguagem
 O S.A.V.E. é completamente agnóstico. Acesse a pasta `wrappers/` e copie o código pronto correspondente ao seu ecossistema:
-- 🐍 **Python** (`version.py`)
+- 🧠 **Python** (`version.py`)
 - 🐘 **PHP** (`version.php`)
 - 🟡 **Node.js** (`version.js`)
 - 🐹 **Golang** (`version.go`)

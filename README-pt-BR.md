@@ -1,10 +1,14 @@
-# BLUEPRINT: Sovereign Auto-Version Engine
+# Sovereign Auto-Version Engine (S.A.V.E.)
+
+> *"Faça uma única coisa, faça de forma simples e faça com perfeição."*
+> 
+> O motor definitivo de auto-versionamento. Fricção Zero, Agnóstico e sem dependências, ancorado na pura filosofia UNIX. Sem necessidade de Node.js, sem arquivos de configuração obesos. Apenas certeza matemática.
 
 ## 1. O Manifesto (Agnosticismo & Fricção Zero)
 
 O mercado atual de desenvolvimento de software sofre de uma epidemia de complexidade. Ferramentas de versionamento modernas (como `semantic-release` ou `bump2version`) tornaram-se obesas. Elas exigem a instalação de ecossistemas inteiros (como Node.js), dezenas de dependências complexas e arquivos de configuração engessados para executar uma tarefa fundamental: incrementar um número de versão.
 
-O **Sovereign Auto-Version Engine** nasce como o antídoto definitivo a essa burocracia, sendo fundamentado na filosofia UNIX original: *fazer uma única coisa e fazê-la com perfeição.*
+O **Sovereign Auto-Version Engine** nasce como o antídoto definitivo a essa burocracia.
 
 **Nossos Princípios:**
 - **Fricção Zero:** Não há dependências, não requer downloads de pacotes ou SDKs. Se você tem o Git rodando nativamente, o sistema já funciona.

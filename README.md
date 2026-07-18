@@ -1,10 +1,14 @@
-# Sovereign Auto-Version Engine
+# Sovereign Auto-Version Engine (S.A.V.E.)
+
+> *"Do one thing, do it simply, and do it perfectly."*
+> 
+> The ultimate Zero-Friction, Zero-Dependency, Agnostic Auto-Version Engine rooted in the pure UNIX philosophy. No Node.js, no bloated configs, no bullshit. Just mathematical certainty.
 
 ## 1. The Manifesto (Agnosticism & Zero Friction)
 
 The current software development market suffers from an epidemic of complexity. Modern versioning tools (like `semantic-release` or `bump2version`) have become bloated. They require installing entire ecosystems (like Node.js), dozens of complex dependencies, and rigid configuration files to execute a fundamental task: incrementing a version number.
 
-The **Sovereign Auto-Version Engine** is born as the ultimate antidote to this bureaucracy, rooted in the original UNIX philosophy: *do one thing and do it perfectly.*
+The **Sovereign Auto-Version Engine** is born as the ultimate antidote to this bureaucracy.
 
 **Our Principles:**
 - **Zero Friction:** No dependencies, no package downloads, no SDKs required. If you have Git running natively, the system works.

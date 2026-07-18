@@ -11,7 +11,7 @@ func GetSaveVersion() string {
 	tagData, err2 := os.ReadFile("v_tag.txt")
 	
 	if err1 != nil || err2 != nil {
-		return "vX.X - Build 0 (SAVE não detectado)"
+		return "vX.X - Build 0 (SAVE not detected)"
 	}
 	
 	build := strings.TrimSpace(string(buildData))

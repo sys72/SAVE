@@ -1,9 +1,9 @@
-// COLE ESTE BLOCO NO SEU app/build.gradle.kts
-// A beleza nativa: não exige o post-commit hook. O próprio Gradle calcula e atrela atômicamente no build.
+// PASTE THIS BLOCK IN YOUR app/build.gradle.kts
+// Native beauty: does not require the post-commit hook. Gradle itself computes and binds atomically on build.
 
 val gitVersion = providers.exec { commandLine("git", "rev-list", "--count", "HEAD") }.standardOutput.asText.get().trim()
 val semVerCode = gitVersion.toInt()
-val semVerName = "1.0.$gitVersion" // Altere o prefixo "1.0" conforme a sua Major/Minor Tag atual
+val semVerName = "1.0.$gitVersion" // Change the "1.0" prefix according to your current Major/Minor Tag
 
 android {
     defaultConfig {

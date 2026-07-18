@@ -1,18 +1,18 @@
 #!/bin/bash
 # Sovereign Auto-Version Engine
 
-# Offset estático para compensar versões anteriores (Altere se necessário)
+# Static offset to compensate for previous versions (Change if needed)
 BASE_BUILD=0
 
-# Matemática Determinística
+# Deterministic Mathematics
 LOCAL_COMMITS=$(git rev-list --count HEAD)
 BUILD_COUNT=$((BASE_BUILD + LOCAL_COMMITS))
 
-# Captura Forense
+# Forensic Capture
 GIT_HASH=$(git rev-parse --short HEAD)
 GIT_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v1.0.0")
 
-# Renderização do Espelho Atômico (Os TXTs na raiz do projeto)
+# Atomic Mirror Rendering (TXTs at the root of the project)
 TARGET_DIR="."
 echo "$BUILD_COUNT" > "$TARGET_DIR/v_build.txt"
 echo "$GIT_HASH"    > "$TARGET_DIR/v_hash.txt"

@@ -4,5 +4,5 @@ if [ -f "v_build.txt" ] && [ -f "v_tag.txt" ]; then
     TAG=$(cat v_tag.txt)
     echo "$TAG - Build $BUILD"
 else
-    echo "vX.X - Build 0 (SAVE não detectado)"
+    echo "vX.X - Build 0 (SAVE not detected)"
 fi

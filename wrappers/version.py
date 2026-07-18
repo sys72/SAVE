@@ -6,7 +6,7 @@ def get_save_version():
             tag = f.read().strip()
         return f"{tag} - Build {build}"
     except FileNotFoundError:
-        return "vX.X - Build 0 (SAVE não detectado)"
+        return "vX.X - Build 0 (SAVE not detected)"
 
 if __name__ == "__main__":
     print(get_save_version())

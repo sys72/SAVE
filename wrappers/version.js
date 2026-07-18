@@ -6,7 +6,7 @@ function getSaveVersion() {
         const tag = fs.readFileSync('v_tag.txt', 'utf8').trim();
         return `${tag} - Build ${build}`;
     } catch (err) {
-        return "vX.X - Build 0 (SAVE não detectado)";
+        return "vX.X - Build 0 (SAVE not detected)";
     }
 }
 

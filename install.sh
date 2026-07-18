@@ -1,14 +1,14 @@
 #!/bin/bash
-# Sovereign Auto-Version Engine - Instalador Fricção Zero
+# Sovereign Auto-Version Engine - Zero Friction Installer
 
 if [ ! -d ".git" ]; then
-    echo "❌ Erro: Execute este script na raiz de um projeto que possua a pasta oculta .git"
+    echo "❌ Error: Execute this script at the root of a project containing a .git directory"
     exit 1
 fi
 
-echo "🚀 Instalando o S.A.V.E. no repositório local..."
+echo "🚀 Installing S.A.V.E. in the local repository..."
 mkdir -p .git/hooks
 cp hooks/post-commit .git/hooks/post-commit
 chmod +x .git/hooks/post-commit
 
-echo "✅ Sucesso! Motor autônomo acoplado. Seu próximo 'git commit' já será imortalizado."
+echo "✅ Success! Autonomous engine attached. Your next 'git commit' will be immortalized."

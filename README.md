@@ -35,7 +35,29 @@ The project's `Build Number` stops being an abstract number in memory and physic
 
 ---
 
-## 3. The Trigger (The Heart of the Machine)
+## 3. 🚀 Quickstart & Installation (Zero Friction)
+
+Forget manual configurations. Implementing the Sovereign Engine takes exactly 3 seconds.
+
+### Step 1: Install the Engine
+Run the 1-click installer at the root of your Git repository:
+```bash
+./install.sh
+```
+*(This automatically couples the deterministic hook into your `.git/hooks/` folder).*
+
+### Step 2: Choose your Wrapper
+The S.A.V.E. is completely language-agnostic. Check the `wrappers/` folder for ready-to-use drop-in code for your tech stack:
+- 🐍 **Python** (`version.py`)
+- 🐘 **PHP** (`version.php`)
+- 🟡 **Node.js** (`version.js`)
+- 🐹 **Golang** (`version.go`)
+- 💻 **Bash** (`version.sh`)
+- 🤖 **Kotlin/Android** (`android_build_gradle_snippet.kts` - Native Gradle injection)
+
+---
+
+## 4. Under the Hood: The Trigger
 
 The magic happens completely invisibly. The developer doesn't need to remember to invoke complex commands to bump the version. The orchestration resides in the repository's native internal trigger: the **Git Hook**.
 
@@ -67,7 +89,7 @@ Upon hitting enter on the commit command, the system stamps the indelible finger
 
 ---
 
-## 4. Reading Modules (State Consumption)
+## 5. Reading Modules (State Consumption)
 
 With the Build state stored in isolation in harmless `.txt` files, the main application or project interface acts only as a "Reading Lens". 
 

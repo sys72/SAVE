@@ -35,7 +35,29 @@ O `Build Number` do projeto deixa de ser um número abstrato na memória e passa
 
 ---
 
-## 3. O Gatilho (O Coração da Máquina)
+## 3. 🚀 Quickstart & Instalação (Fricção Zero)
+
+Esqueça configurações manuais. Implementar o Motor Soberano leva exatamente 3 segundos.
+
+### Passo 1: Instale o Motor
+Rode o instalador de 1-clique na raiz do seu repositório Git:
+```bash
+./install.sh
+```
+*(Isso acopla automaticamente o hook determinístico dentro da sua pasta oculta `.git/hooks/`).*
+
+### Passo 2: Escolha a sua Linguagem
+O S.A.V.E. é completamente agnóstico. Acesse a pasta `wrappers/` e copie o código pronto correspondente ao seu ecossistema:
+- 🐍 **Python** (`version.py`)
+- 🐘 **PHP** (`version.php`)
+- 🟡 **Node.js** (`version.js`)
+- 🐹 **Golang** (`version.go`)
+- 💻 **Bash** (`version.sh`)
+- 🤖 **Kotlin/Android** (`android_build_gradle_snippet.kts` - Injeção nativa no Gradle)
+
+---
+
+## 4. Por Trás das Cortinas: O Gatilho
 
 A mágica ocorre de forma totalmente invisível. O desenvolvedor não precisa lembrar de invocar comandos complexos para fazer o "bump" de versão. A orquestração reside no gatilho interno nativo do próprio repositório: o **Git Hook**.
 
@@ -67,7 +89,7 @@ A cada enter no comando de commit, o sistema crava as digitais indeléveis daque
 
 ---
 
-## 4. Módulos de Leitura (O Consumo do Estado)
+## 5. Módulos de Leitura (O Consumo do Estado)
 
 Com o estado da Build armazenado de forma isolada nos arquivos `.txt` inofensivos, a aplicação principal ou interface do projeto atua apenas como uma "Lente de Leitura". 
 

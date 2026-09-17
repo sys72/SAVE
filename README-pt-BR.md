@@ -12,7 +12,7 @@ O **Sovereign Auto-Version Engine** nasce como o antídoto definitivo a essa bur
 
 **Nossos Princípios:**
 - **Fricção Zero:** Não há dependências, não requer downloads de pacotes ou SDKs. Se você tem o Git rodando nativamente, o sistema já funciona.
-- **Agnosticismo Total:** Não importa se o seu projeto é escrito em PHP, Python, Java, C++ ou JS. O motor interage exclusivamente com arquivos de texto puro (`.txt`), tornando a linguagem final do projeto irrelevante.
+- **Agnosticismo Total:** Não importa se o seu projeto é escrito em PHP, Python, Java, C++, Kotlin ou JS. O motor interage exclusivamente com arquivos de texto puro (`.txt`), tornando a linguagem final do projeto irrelevante.
 - **Anti-Falho por Natureza:** O versionamento não é um script externo e esquecível. Ele é atrelado organicamente à única ação inevitável do desenvolvedor no ciclo de desenvolvimento: o salvamento da história via `git commit`.
 
 ---
@@ -23,15 +23,27 @@ A falha primária dos sistemas clássicos de versionamento é depender de uma l�
 
 O Sovereign Engine abandona essa prática frágil e implementa um **Motor Determinístico Baseado no Histórico**.
 
-A matemática do motor é absoluta e irreversível:
+### A Lei Métrica do Odômetro (10 / 100):
+Para eliminar qualquer necessidade de intervenção humana ou configuração arbitrária de versões, o S.A.V.E. adota a **Lei Métrica Decimal** como o denominador comum universal da engenharia de software:
+- **PATCH** = `BUILD_COUNT % 10` (avança a cada commit individual de 0 a 9)
+- **MINOR** = `(BUILD_COUNT % 100) / 10` (avança a cada 10 commits de 0 a 9)
+- **MAJOR** = `BUILD_COUNT / 100` (avança a cada 100 commits)
+
+A física da árvore do Git gera a versão semântica (`MAJOR.MINOR.PATCH`) e a build imutável de forma instantânea:
 ```bash
 LOCAL_COMMITS=$(git rev-list --count HEAD)
 BUILD_COUNT=$((BASE_BUILD + LOCAL_COMMITS))
+
+MAJOR=$(( BUILD_COUNT / 100 ))
+MINOR=$(( (BUILD_COUNT % 100) / 10 ))
+PATCH=$(( BUILD_COUNT % 10 ))
+SEMVER="${MAJOR}.${MINOR}.${PATCH}"
 ```
-O `Build Number` do projeto deixa de ser um número abstrato na memória e passa a representar fisicamente o **volume e o tamanho da árvore do Git**. 
+O `Build Number` e a `Versão Semântica` deixam de ser números abstratos na memória e passam a representar fisicamente o **volume e a maturidade da árvore do Git**.
 
 **Vantagens Práticas:**
-- **Sincronia Indestrutível:** Se 15 commits forem puxados remotamente via `git pull`, o sistema salta 15 builds matematicamente. Se commits locais forem destruídos via `git reset`, a build regride. O arquivo `.txt` passa a atuar apenas como um "espelho imutável" da física real do repositório, garantindo integridade 100% do tempo.
+- **Denominador Comum Universal:** Atende perfeitamente desde micro-utilitários focados (como apps de 40 KB que atingem maturidade e vão para a loja na faixa dos 50-100 commits) até sistemas robustos de infraestrutura e containers (onde cada 100 commits consolida uma nova geração do software).
+- **Sincronia Indestrutível:** Se 15 commits forem puxados remotamente via `git pull`, o sistema salta 15 builds matematicamente. Se commits locais forem destruídos via `git reset`, a build regride. Os arquivos `.txt` passam a atuar apenas como "espelhos imutáveis" da física real do repositório, garantindo integridade 100% do tempo.
 
 ---
 
@@ -48,12 +60,12 @@ Rode o instalador de 1-clique na raiz do seu repositório Git:
 
 ### Passo 2: Escolha a sua Linguagem
 O S.A.V.E. é completamente agnóstico. Acesse a pasta `wrappers/` e copie o código pronto correspondente ao seu ecossistema:
+- 🤖 **Kotlin/Android** (`android_build_gradle_snippet.kts` - Injeção nativa no Gradle KTS e Groovy)
+- 💻 **Bash** (`version.sh`)
 - 🧠 **Python** (`version.py`)
 - 🐘 **PHP** (`version.php`)
 - 🟡 **Node.js** (`version.js`)
 - 🐹 **Golang** (`version.go`)
-- 💻 **Bash** (`version.sh`)
-- 🤖 **Kotlin/Android** (`android_build_gradle_snippet.kts` - Injeção nativa no Gradle)
 
 ---
 
@@ -66,21 +78,28 @@ Ao gravar o arquivo executável `post-commit` dentro da pasta oculta `.git/hooks
 **A Engenharia do Gatilho (`post-commit`):**
 ```bash
 #!/bin/bash
-# Sovereign Auto-Version Engine
+# Sovereign Auto-Version Engine (S.A.V.E.)
 
 # Offset estático para compensar a continuidade de versões anteriores
 BASE_BUILD=0
 
 # Matemática Determinística da Árvore
-LOCAL_COMMITS=$(git rev-list --count HEAD)
+LOCAL_COMMITS=$(git rev-list --count HEAD 2>/dev/null || echo 0)
 BUILD_COUNT=$((BASE_BUILD + LOCAL_COMMITS))
 
+# Motor Métrico Semântico (10 / 100)
+MAJOR=$(( BUILD_COUNT / 100 ))
+MINOR=$(( (BUILD_COUNT % 100) / 10 ))
+PATCH=$(( BUILD_COUNT % 10 ))
+SEMVER="${MAJOR}.${MINOR}.${PATCH}"
+
 # Captura de Identidade Forense
-GIT_HASH=$(git rev-parse --short HEAD)
-GIT_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v1.0.0")
+GIT_HASH=$(git rev-parse --short HEAD 2>/dev/null || echo "0000000")
+GIT_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v${SEMVER}")
 
 # Renderização do Espelho Atômico (Os TXTs)
 TARGET_DIR="."
+echo "$SEMVER"      > "$TARGET_DIR/v_version.txt"
 echo "$BUILD_COUNT" > "$TARGET_DIR/v_build.txt"
 echo "$GIT_HASH"    > "$TARGET_DIR/v_hash.txt"
 echo "$GIT_TAG"     > "$TARGET_DIR/v_tag.txt"
@@ -91,30 +110,30 @@ A cada enter no comando de commit, o sistema crava as digitais indeléveis daque
 
 ## 5. Módulos de Leitura (O Consumo do Estado)
 
-Com o estado da Build armazenado de forma isolada nos arquivos `.txt` inofensivos, a aplicação principal ou interface do projeto atua apenas como uma "Lente de Leitura". 
+Com o estado da Build e da Versão armazenado de forma isolada nos arquivos `.txt` inofensivos, a aplicação principal ou interface do projeto atua apenas como uma "Lente de Leitura". 
 
 Cada linguagem tem o seu módulo tradutor (`wrapper`) de forma purista e trivial.
 
 ### Exemplo Prático em PHP (`version.php`):
 ```php
 <?php
-$build = file_get_contents('v_build.txt');
-$hash  = file_get_contents('v_hash.txt');
-$tag   = file_get_contents('v_tag.txt');
+$version = file_get_contents('v_version.txt');
+$build   = file_get_contents('v_build.txt');
+$hash    = file_get_contents('v_hash.txt');
 
-$dpd_version = trim($tag) . " - Build " . trim($build);
+$dpd_version = "v" . trim($version) . " - Build " . trim($build);
 $dpd_sub = "Hash: " . trim($hash);
 ?>
 ```
 
 ### Exemplo Prático em Python (`version.py`):
 ```python
-def get_sfb_version():
+def get_save_version():
+    with open('v_version.txt', 'r') as f:
+        version = f.read().strip()
     with open('v_build.txt', 'r') as f:
         build = f.read().strip()
-    with open('v_tag.txt', 'r') as f:
-        tag = f.read().strip()
-    return f"{tag} - Build {build}"
+    return f"v{version} (Build {build})"
 ```
 
 Ao isolar brutalmente a regra matemática (o bash hook) da leitura superficial dos dados (a aplicação), o painel final herda uma identidade hiper-precisa sem o risco de corrupção sistêmica. O código permanece intocado, mas a governança vira lei.

@@ -1,0 +1,28 @@
+# Backups e Salvaguardas S.A.V.E.
+backups/
+*.bak
+*~
+
+# Arquivos de Estado Dinâmico Gerados Localmente
+v_*.txt
+
+# Segredos, Chaves e Credenciais
+*.key
+*.pem
+*.keystore
+*.jks
+*.kdbx
+.env
+.env.*
+
+# Logs e Temporários
+*.log
+*.tmp
+*.swp
+
+# Arquivos de Sistema e IDE
+.directory
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
